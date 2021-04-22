@@ -21,11 +21,12 @@ const triggerDownload = async e => {
     let url = document.getElementById('url').value;
     console.log(`Attempting the download of ${url}...`);
     
-    /* try {
+    try {
         url = new URL(url);
     } catch (e) {
-        return console.log(`Error: Invalid URL!`);
-    } */
+        if (testResources.indexOf(url) < 0)
+            return console.log(`Error: Invalid URL!`);
+    }
 
     let response;
     try {
@@ -130,3 +131,9 @@ const extensions = {
     'video/x-msvideo':                       'avi',
     'video/mp4':                             'm4v'
 };
+
+const testResources = [
+    'image.png',
+    'text.txt',
+    'audio.ogg'
+];
